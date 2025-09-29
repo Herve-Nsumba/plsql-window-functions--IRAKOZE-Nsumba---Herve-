@@ -5,6 +5,7 @@ PL/SQL-WINDOW-FUNCTIONS--IRAKOZE-Nsumba---Herve-
 **STEP 1: Problem Definition**
 
 **Company**: RwandaAir
+
 **Industry**: Aviation & Tourism
 
 During the UCI World Cycling Championship, RwandaAir anticipated a surge in international and regional passengers, including teams, fans, and media.
@@ -24,24 +25,22 @@ RwandaAir needed to analyze ticket sales and flight data from the event to deter
 
 **STEP 2: Success Criteria**
 
-  1.Top 5 Flight Routes per Day – RANK() / DENSE_RANK() → Find highest-revenue routes daily.
-  
-  2.Cumulative Ticket Revenue – SUM() OVER → Track running revenue totals by route.
-  
-  3.Day-over-Day Passenger Growth – LAG() / LEAD() → Compare demand shifts between days.
-  
-  4.Customer Spending Quartiles – NTILE(4) → Segment passengers into spend groups.
-  
-  5.3-Day Moving Average Revenue – AVG() OVER → Smooth daily fluctuations for clearer trends.
+1.Top 5 Flight Routes per Day – RANK() / DENSE_RANK() → Find highest-revenue routes daily.
+
+2.Cumulative Ticket Revenue – SUM() OVER → Track running revenue totals by route.
+
+3.Day-over-Day Passenger Growth – LAG() / LEAD() → Compare demand shifts between days.
+
+4.Customer Spending Quartiles – NTILE(4) → Segment passengers into spend groups.
+
+5.3-Day Moving Average Revenue – AVG() OVER → Smooth daily fluctuations for clearer trends.
 
 **STEP 3: Database Schema**
 
 **Tables & Keys:**
 Routes: route_id, origin, destination
 
-Flights: flight_id, route_id, flight_date, passenger_count, revenue
-
-FOREIGN KEY(route_id)
+Flights: flight_id, route_id, flight_date, passenger_count, revenue, FOREIGN KEY(route_id)
 
 Customers: customer_id, name, total_spent
 
@@ -52,50 +51,44 @@ Screenshots in the screenshot folder
 **Entity-Relationship:**
 Its screenshot is shown in the /screenshot/ folder
 
- - Routes define origin–destination pairs.
- 
- - Flights are scheduled journeys linked to routes.
- 
- - Customers may purchase multiple Tickets.
- 
- - Tickets link passengers to flights with purchase details.
+- Routes define origin–destination pairs.
+
+- Flights are scheduled journeys linked to routes.
+
+- Customers may purchase multiple Tickets.
+
+- Tickets link passengers to flights with purchase details.
 
 **STEP 4: Window Function Implementation**
 
 All the screenshot are in the /screenshot/ folder
 
- * Ranking – Identify top-spending passengers.
- 
- * Aggregate – Track cumulative bookings and revenue trends.
- 
- * Navigation – Measure month-to-month revenue growth.
- 
- * Distribution – Segment customers by total spending.
+- Ranking – Identify top-spending passengers.
+
+- Aggregate – Track cumulative bookings and revenue trends.
+
+- Navigation – Measure month-to-month revenue growth.
+
+- Distribution – Segment customers by total spending.
 
 **STEP 5: Results Analysis**
 
 **Descriptive** – What happened?
 
 1. High spenders were frequent flyers and business travelers.
-    
 2. Bookings rose during seasonal peaks and the UCI event.
-    
 3. Outliers included bulk or last-minute group bookings.
-    
-**Diagnostic ** – Why?
+
+**Diagnostic** – Why?
 
 1. Loyalty programs and corporate travel drove repeat spending.
-    
 2. Tourism cycles and international events shaped booking trends.
-    
 3. Outliers linked to irregular booking patterns.
 
-**Prescriptive ** – What next?
+**Prescriptive** – What next?
 
 1. Enhance loyalty incentives for top customers.
-    
 2. Adjust pricing and capacity to seasonal demand.
-    
 3. Monitor unusual booking spikes for proactive planning.
 
 **STEP 6: References**
